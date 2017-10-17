@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+print "Enter the first side of the rectangle: "
+side1 = int(raw_input(">"))
+
+print "Enter the second side of the rectangle: "
+side2 = int(raw_input(">"))
+
+area = side1 + side2
+perimeter = (2 * side1) + (2 * side2)
+
+print "Do you want to calculate [area] or [perimeter]? "
+choice = raw_input(">")
+
+if choice == "area":
+	print "The area is %d" % area
+elif chocie == "perimeter":
+	print "The perimeter is %d" % perimeter
