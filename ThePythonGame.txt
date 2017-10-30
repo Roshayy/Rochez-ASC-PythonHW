@@ -1,0 +1,98 @@
+!/usr/bin/python
+
+
+#This is broken in several places and barely runs
+
+
+from sys import exit
+
+prompt = '> '
+
+def dead(why):
+        print why
+        exit(0)
+
+def start():
+        print "BEEP BEEP BEEP"
+        print "Your alarm has gone off. Do you turn it [off] or hit the [snooze]?"
+
+1       next = raw_input("> ")
+
+        if next == 'off':
+                off()
+        elif next == 'snooze':
+                snooze()
+
+def off():
+        print "You shut your alarm off and roll out of bed. You are very groggy."
+        print "On the nightstand next to you is the to-do list you made for tdoay."
+        print "You pick it up and read it."
+        with open('Game_Sample.txt', 'r') as f: note = f.readlines()
+        print note
+        print "Do you go to the [STORE] for food or do you take the car into the [SHOP]?"
+
+        next = raw_input("> ")
+
+        if next == 'store':
+                store()
+        elif next == 'shop':
+                shop()
+def snooze():
+        list1 = ['snooze, snooze, snooze']
+        for snooze in list1:
+                print "> ", snooze
+        print "You hit the snooze button on the alarm and fall back to sleep."
+        print "You peacefully drift back into conciousness. Something is wrong! Your alarm never went off again!"
+        print "You lose."
+        dead()
+        # also broken here, not sure why
+def store():
+        list2 = ['eggs', 'milk', 'butter']
+        list3 = ['bread']
+        print "You decide to go to the store for today."
+        print "You have two shopping lists, but want to consolidate into just one."
+        print list2
+        print list3
+        list3.pop()
+        list2.append(list3)
+        print(list2)
+        print "There, all finsihed. Now you are ready to go. All you have to do is get the car keys out of your safe."
+        print "Do you [open] the safe?"
+
+        if next == 'open':
+                safe()
+# program closes on its own here, not sure why
+def safe():
+
+        code = raw_input("> ")
+
+        code2 = True
+
+        while True:
+                if code == '123':
+                        code2 = False
+                        opened()
+                elif code != '123':
+                        print "That was wrong, maybe try again?"
+                        safe()
+def opened():
+        print "You opened the safe and got your keys."
+        print "Pulling out of your driveway, you gun your car down the rode."
+        print "After a few miles you start to feel the car run a little rough."
+        print "Paying no heed, you continue on to the store."
+        print "Suddenly, the engine seizes up. You must be out of oil!"
+        print "Your last thoughts before losing control of the car and smashing into a tree  is 'I should have gone to the shop'"
+        print "You lose."
+        dead()
+
+def shop():
+        print "You decide to go to the shop."
+        print "After all, the car shop is just around the corner, and you don't know how long your car will continue to be safe to drive."
+        print "Arriving at the shop after the short drive, you give up your car and wait by the front desk."
+        print "Almost an hour passes, and you start to wonder if this wasn't just a huge waste of time."
+        print "Finally the mechanic comes back out and bills you for over $75!"
+        print "What a ripoff this place is. 'Im never coming back here' you exclaim."
+        print "The end."
+        dead()
+
+start()
